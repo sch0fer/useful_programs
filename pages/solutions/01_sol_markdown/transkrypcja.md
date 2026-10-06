@@ -1,6 +1,6 @@
 # Transkrypcja
 
-![Zdjęcie notatek dot. kropki kwantowej](01_sol_markdown/zrzut.png)
+![Zdjęcie notatek dot. kropki kwantowej](zrzut.png)
 
 ## Prompt użyty do wygenerowania tekstu przez AI
 1. ```text
