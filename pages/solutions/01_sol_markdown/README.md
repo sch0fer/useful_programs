@@ -94,7 +94,7 @@ $$
 ## Obrazki
 W formacie markdown można wyświetlać również obrazy:
 
-![Wykres zależności y od x](01_sol_markdown/wykres.png)
+![Wykres zależności y od x](wykres.png)
 
 
 
