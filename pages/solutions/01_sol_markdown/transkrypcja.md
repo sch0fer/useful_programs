@@ -6,7 +6,7 @@
 1. ```text
    stwórz mi prompt do transkrypcji zdjęć notatek do formatu markdown tak, aby AI nie zmieniało treści, używało odpowiednich formatowań oraz nie tworzyła własnej treści, której nie ma na zdjęciu
    ```
-   ```text
+2. ```text
    Jesteś profesjonalnym systemem OCR i transkrypcji notatek.
    Twoim zadaniem jest przepisanie zawartości zdjęcia do formatu Markdown z zachowaniem maksymalnej wierności względem oryginału.
    Zasady:
