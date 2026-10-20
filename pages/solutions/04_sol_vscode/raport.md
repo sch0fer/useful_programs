@@ -7,7 +7,7 @@
 **Metoda:** rozwiązanie analityczne bez oporu oraz numeryczne rozwiązanie równań ruchu z oporem kwadratowym.  
 **Charakter wyników:** ilustracja modelowa, nie pomiar laboratoryjny.
 
-Rzut ukośny można rozłożyć na dwa ruchy: poziomy i pionowy. Bez oporu powietrza są one niezależne, a tor jest parabolą. Opór zależy od wektora prędkości, więc w modelu z powietrzem składowe ruchu są sprzężone i równania rozwiązujemy numerycznie.
+Rzut ukośny można rozłożyć na dwa ruchy: poziomy i pionowy. Bez oporu powietrza są one niezależne, a tor jest parabolą. Opór zależy od wektora prędkości, więc w modelu z powietrzem składowe ruchu są sprzężone, a równania rozwiązuje się numerycznie.
 
 ## Spis treści
 
@@ -25,22 +25,21 @@ Rzut ukośny można rozłożyć na dwa ruchy: poziomy i pionowy. Bez oporu powie
 
 ### 1.1. Układ współrzędnych i założenia
 
-Początek układu współrzędnych umieszczamy w punkcie wyrzutu. Oś $x$ jest pozioma i skierowana w kierunku rzutu, a oś $y$ pionowa i skierowana do góry. Podłoże jest poziome, więc punkt lądowania ma wysokość $y=0$.
+Początek układu współrzędnych umieszczono w punkcie wyrzutu. Oś $x$ jest pozioma i skierowana w kierunku rzutu, a oś $y$ pionowa i skierowana do góry. Podłoże jest poziome, zatem punkt lądowania ma wysokość $y=0$.
 
-Przyjmujemy następujące założenia:
+Przyjęto następujące założenia:
 
 - przyspieszenie grawitacyjne jest stałe i wynosi $g=9{,}81\,\mathrm{m/s^2}$;
 - prędkość początkowa ma wartość $v_0=36\,\mathrm{m/s}$ i tworzy z poziomem kąt $2^\circ$;
 - wiatr nie występuje, a gęstość powietrza i współczynnik oporu są stałe;
-- ciało modelujemy jako kulę o stałej masie i średnicy;
-- pomijamy obrót, siłę nośną, wypór powietrza i zmianę wysokości terenu;
-- w modelu z oporem przyjmujemy opór kwadratowy, odpowiedni dla ruchu kuli w powietrzu w rozpatrywanym zakresie prędkości.
+- ciało zamodelowano jako gładką kulę o stałej masie i średnicy;
+- pominięto obrót (efekt Magnusa), siłę nośną, siłę wyporu Archimedesa i zmianę wysokości terenu;
+- w modelu z oporem uwzględniono opór kwadratowy (prawo Rayleigha), odpowiedni dla ruchu kuli w powietrzu przy rozpatrywanych liczbach Reynoldsa.
 
-Zapis „02” interpretujemy jako kąt dwóch stopni. W obliczeniach numerycznych funkcje trygonometryczne otrzymują kąt w radianach:
+Zapis „02” zinterpretowano jako kąt dwóch stopni ($2^\circ$). W obliczeniach numerycznych kąt wyrażono w radianach:
 
 $$
-\alpha=2^\circ\frac{\pi}{180^\circ}
-=0{,}0349066\,\mathrm{rad}.
+\alpha = 2^\circ\frac{\pi}{180^\circ} = 0{,}0349066\,\mathrm{rad}.
 $$
 
 ![Porównanie toru rzutu bez oporu i z oporem kwadratowym](files/rzut_ukosny/tor_ruchu.png)
@@ -70,92 +69,100 @@ $$
 
 ### 2.1. Rozłożenie prędkości początkowej
 
-Prędkość początkową rozkładamy na składowe wzdłuż osi:
+W chwili początkowej $t=0$ wektor prędkości $\vec v_0$ tworzy z poziomem kąt $\alpha$. Jego składowe wzdłuż osi układu współrzędnych wynoszą:
 
 $$
-v_{x0}=v_0\cos\alpha,
+v_{x0} = v_0\cos\alpha,
 \qquad
-v_{y0}=v_0\sin\alpha.
+v_{y0} = v_0\sin\alpha.
 $$
 
-Dla podanych danych:
+Dla przyjętych danych początkowych ($v_0=36\,\mathrm{m/s}$, $\alpha=2^\circ$):
 
 $$
-v_{x0}=36\cos(2^\circ)=35{,}9781\,\mathrm{m/s},
+v_{x0} = 36\cos(2^\circ) = 35{,}9781\,\mathrm{m/s},
 \qquad
-v_{y0}=36\sin(2^\circ)=1{,}25638\,\mathrm{m/s}.
+v_{y0} = 36\sin(2^\circ) = 1{,}25638\,\mathrm{m/s}.
 $$
 
 ### 2.2. Równania ruchu i ich wyprowadzenie
 
-Bez oporu jedyną siłą działającą po wyrzucie jest ciężar $\vec F_g=(0,-mg)$. Z drugiej zasady Newtona $m\vec a=\vec F$ otrzymujemy:
+W próżni (przy pominięciu oporów powietrza) jedyną siłą działającą na ciało po wyrzucie jest stała siła grawitacji $\vec F_g = (0, -mg)$, skierowana pionowo w dół. Z drugiej zasady dynamiki Newtona $m\vec a = \vec F_g$ wynika:
 
 $$
-m\ddot{x}=0,
+m\ddot{x} = 0,
 \qquad
-m\ddot{y}=-mg,
+m\ddot{y} = -mg,
 $$
 
-czyli
+stąd równania przyspieszeń przyjmują postać:
 
 $$
-\ddot{x}=0,
+\ddot{x} = 0,
 \qquad
-\ddot{y}=-g.
+\ddot{y} = -g.
 $$
 
-Całkujemy równania, korzystając z warunków początkowych $x(0)=y(0)=0$, $\dot{x}(0)=v_{x0}$ oraz $\dot{y}(0)=v_{y0}$:
+Ruch w kierunku poziomym jest ruchem jednostajnym prostoliniowym ze stałą prędkością $v_{x0}$ ($a_x = 0$), natomiast ruch w kierunku pionowym jest ruchem jednostajnie zmiennym ze stałym przyspieszeniem ziemskim skierowanym w dół ($a_y = -g$).
+
+Po scałkowaniu równań przyspieszenia z uwzględnieniem warunków początkowych $x(0)=0$, $y(0)=0$, $\dot{x}(0)=v_{x0}$ oraz $\dot{y}(0)=v_{y0}$ równania prędkości mają postać:
 
 $$
-v_x(t)=v_{x0},
+v_x(t) = v_{x0},
 \qquad
-v_y(t)=v_{y0}-gt,
+v_y(t) = v_{y0}-gt,
 $$
 
-$$
-x(t)=v_{x0}t=v_0\cos\alpha\,t,
-\qquad
-y(t)=v_{y0}t-\frac{1}{2}gt^2
-=v_0\sin\alpha\,t-\frac{1}{2}gt^2.
-$$
-
-Aby otrzymać równanie toru, z pierwszego równania położenia wyznaczamy czas $t=x/(v_0\cos\alpha)$ i podstawiamy go do $y(t)$:
+natomiast równania położenia:
 
 $$
-y(x)=x\tan\alpha-\frac{g x^2}{2v_0^2\cos^2\alpha}.
+\begin{aligned}
+x(t) &= v_{x0}t = v_0\cos\alpha\,t, \\
+y(t) &= v_{y0}t - \frac{1}{2}gt^2 = v_0\sin\alpha\,t - \frac{1}{2}gt^2.
+\end{aligned}
 $$
 
-Jest to parabola. Jej kształt wynika z jednostajnego ruchu poziomego i jednostajnie przyspieszonego ruchu pionowego.
-
-### 2.3. Czas lotu, wysokość i zasięg
-
-W najwyższym punkcie toru pionowa składowa prędkości znika. Z równania $v_y(t)=v_{y0}-gt=0$ wynika:
+Równanie toru wyznacza się poprzez eliminację czasu $t$. Z równania ruchu poziomego wyznacza się czas $t = x/(v_0\cos\alpha)$ i podstawia do równania współrzędnej pionowej $y(t)$:
 
 $$
-t_{\mathrm{wzn}}=\frac{v_0\sin\alpha}{g}.
+y(x) = x\tan\alpha - \frac{gx^2}{2v_0^2\cos^2\alpha}.
 $$
 
-Ponieważ start i lądowanie są na tej samej wysokości, czas lotu jest dwukrotnością czasu wznoszenia:
+Równanie to przedstawia parabolę o ramionach skierowanych w dół (współczynnik przy $x^2$ jest ujemny). Kształt toru jest bezpośrednią konsekwencją złożenia jednostajnego ruchu w poziomie oraz jednostajnie zmiennego ruchu w pionie.
+
+### 2.3. Czas wznoszenia, maksymalna wysokość i zasięg
+
+W fazie wznoszenia składowa pionowa prędkości $v_y(t) = v_{y0} - gt$ jest dodatnia, a jej zwrot jest przeciwny do przyspieszenia grawitacyjnego, co oznacza ruch jednostajnie opóźniony. Grawitacja nieustannie zmniejsza prędkość pionową ze stałą szybkością $g$, aż w najwyższym punkcie toru (wierzchołku paraboli) zostaje ona zredukowana do zera ($v_y = 0$). W tym punkcie wektor prędkości ciała staje się ściśle poziomy: $\vec v(t_{\mathrm{wzn}}) = (v_{x0}, 0)$.
+
+Z warunku zerowania składowej pionowej prędkości $v_y(t_{\mathrm{wzn}}) = v_{y0} - gt_{\mathrm{wzn}} = 0$ wyznacza się czas wznoszenia:
 
 $$
-T=\frac{2v_0\sin\alpha}{g}.
+t_{\mathrm{wzn}} = \frac{v_0\sin\alpha}{g}.
 $$
 
-Maksymalną wysokość obliczamy, podstawiając $t_{\mathrm{wzn}}$ do $y(t)$:
+Natychmiast po minięciu wierzchołka paraboli, pod nieprzerwanym działaniem przyspieszenia grawitacyjnego $a_y = -g$, składowa pionowa prędkości przyjmuje wartości ujemne ($v_y < 0$), a ciało przechodzi w fazę opadania ruchem jednostajnie przyspieszonym.
+
+Gdy punkty wyrzutu i lądowania znajdują się na tej samej wysokości ($y=0$), z równania $y(T) = v_{y0}T - \frac{1}{2}gT^2 = 0$ (dla $T > 0$) wynika, że faza wznoszenia i opadania trwają tyle samo, a całkowity czas lotu wynosi:
 
 $$
-H=y(t_{\mathrm{wzn}})
-=\frac{v_0^2\sin^2\alpha}{2g}.
+T = 2 t_{\mathrm{wzn}} = \frac{2v_0\sin\alpha}{g}.
 $$
 
-Zasięg to poziome położenie w chwili $T$:
+Maksymalna wysokość wzniesienia $H$ odpowiada położeniu pionowemu w chwili $t_{\mathrm{wzn}}$:
 
 $$
-R=x(T)=v_0\cos\alpha\,T
-=\frac{v_0^2\sin(2\alpha)}{g}.
+H = y(t_{\mathrm{wzn}}) = \frac{v_0^2\sin^2\alpha}{2g}.
 $$
 
-Wzory te zakładają jednakowy poziom wyrzutu i lądowania. Dla $\alpha=2^\circ$ model idealny daje:
+Zasięg rzutu $R$ to odległość pozioma przebyta przez ciało do momentu upadku na podłoże w chwili $T$:
+
+$$
+R = x(T) = v_0\cos\alpha\,T = \frac{v_0^2\sin(2\alpha)}{g}.
+$$
+
+W chwili lądowania ($t=T$) składowa pozioma wynosi nadal $v_x(T) = v_{x0}$, natomiast pionowa $v_y(T) = -v_{y0}$. Wartość prędkości końcowej wynosi $v(T) = \sqrt{v_{x0}^2 + (-v_{y0})^2} = v_0$, co jest w pełni zgodne z zasadą zachowania energii mechanicznej w polu potencjalnym przy braku oporów ruchu.
+
+Dla danych początkowych $\alpha=2^\circ$ i $v_0=36\,\mathrm{m/s}$ model analityczny daje:
 
 | Wielkość | Wzór | Wynik |
 | :--- | :--- | ---: |
@@ -164,73 +171,77 @@ Wzory te zakładają jednakowy poziom wyrzutu i lądowania. Dla $\alpha=2^\circ$
 | Maksymalna wysokość $H$ | $v_0^2\sin^2\alpha/(2g)$ | $0{,}080453\,\mathrm{m}$ |
 | Zasięg $R$ | $v_0^2\sin(2\alpha)/g$ | $9{,}21553\,\mathrm{m}$ |
 
-### 2.4. Prędkość i przyspieszenie
+### 2.4. Prędkość i przyspieszenie w locie idealnym
 
-Wartość prędkości w dowolnej chwili wynosi:
-
-$$
-v(t)=\sqrt{v_x^2+v_y^2}
-=\sqrt{(v_0\cos\alpha)^2+(v_0\sin\alpha-gt)^2}.
-$$
-
-Bez oporu składowa pozioma prędkości jest stała. Pionowa maleje liniowo, przechodzi przez zero w najwyższym punkcie, a następnie staje się ujemna. Przyspieszenie jest stałe:
+Wartość chwilowej prędkości ciała w dowolnym momencie lotu wynosi:
 
 $$
-a_x=0,
+v(t) = \sqrt{v_x^2(t)+v_y^2(t)} = \sqrt{(v_0\cos\alpha)^2+(v_0\sin\alpha-gt)^2}.
+$$
+
+Wektor przyspieszenia jest niezmienny przez cały czas trwania ruchu i wynosi $\vec a(t) = (0, -g)$:
+
+$$
+a_x = 0,
 \qquad
-a_y=-g=-9{,}81\,\mathrm{m/s^2}.
+a_y = -g = -9{,}81\,\mathrm{m/s^2}.
 $$
+
+Prędkość osiąga minimum równe $v_{\min} = v_{x0} = v_0\cos\alpha$ w najwyższym punkcie toru, natomiast w punktach wyrzutu i lądowania osiąga maksimum równe $v_0$.
 
 ## 3. Rzut z oporem powietrza
 
 ### 3.1. Prawo oporu kwadratowego
 
-Dla poruszającej się względem powietrza kuli przyjmujemy wartość siły oporu:
+Dla kuli poruszającej się w powietrzu wartość siły oporu określa zależność:
 
 $$
-F_D=\frac{1}{2}\rho C_D A v^2,
+F_D = \frac{1}{2}\rho C_D A v^2,
 \qquad
-v=\sqrt{v_x^2+v_y^2}.
+v = \sqrt{v_x^2+v_y^2}.
 $$
 
-Siła ma zwrot przeciwny do wektora prędkości, więc zapis wektorowy brzmi:
+Siła ma zwrot przeciwny do wektora prędkości, co w ujęciu wektorowym ma postać:
 
 $$
-\vec F_D=-\frac{1}{2}\rho C_D A\,v\,\vec v.
+\vec F_D = -\frac{1}{2}\rho C_D A\,v\,\vec v.
 $$
 
-Wprowadźmy skróty:
+Wprowadzając oznaczenia pomocnicze:
 
 $$
-c=\frac{1}{2}\rho C_D A,
+c = \frac{1}{2}\rho C_D A,
 \qquad
-k=\frac{c}{m}=\frac{\rho C_D A}{2m}.
+k = \frac{c}{m} = \frac{\rho C_D A}{2m}.
 $$
 
-Wtedy równanie Newtona przyjmuje postać
+Równanie ruchu Newtona przyjmuje wówczas postać:
 
 $$
-m\frac{d\vec v}{dt}=m\vec g-cv\vec v,
+m\frac{d\vec v}{dt} = m\vec g - cv\vec v,
 \qquad
-\frac{d\vec v}{dt}=\vec g-kv\vec v,
+\frac{d\vec v}{dt} = \vec g - kv\vec v,
 $$
 
-gdzie $\vec g=(0,-g)$. Po rozpisaniu na osie otrzymujemy układ równań:
+gdzie $\vec g=(0,-g)$. Układ równań w rzutach na osie ma postać:
 
 $$
 \begin{aligned}
-\dot{x}&=v_x, & \dot{y}&=v_y,\\
-\dot{v}_x&=-k\sqrt{v_x^2+v_y^2}\,v_x,
-&
-\dot{v}_y&=-g-k\sqrt{v_x^2+v_y^2}\,v_y.
+\dot{x} &= v_x, & \dot{y} &= v_y, \\
+\dot{v}_x &= -k\sqrt{v_x^2+v_y^2}\,v_x, & \dot{v}_y &= -g-k\sqrt{v_x^2+v_y^2}\,v_y.
 \end{aligned}
 $$
 
-Opór poziomy zależy również od pionowej składowej prędkości, ponieważ w obu równaniach występuje całkowita szybkość $v$. Dlatego w tym modelu nie można najpierw rozwiązać osi poziomej i pionowej niezależnie. Równania są nieliniowe; w ogólnym przypadku nie mają prostego rozwiązania elementarnego.
+Z fizycznego punktu widzenia obecność modułu prędkości całkowitej $v = \sqrt{v_x^2+v_y^2}$ w obu równaniach oznacza, że ruch w kierunku poziomym i pionowym nie może być rozpatrywany niezależnie — następuje nieliniowe sprzężenie obu składowych. Ponadto układ równań różniczkowych staje się nieliniowy i nie posiada ścisłego rozwiązania analitycznego w funkcjach elementarnych.
+
+Wpływ oporu powietrza na poszczególne fazy lotu charakteryzuje się wyraźną asymetrią fizyczną:
+1. **W fazie wznoszenia ($v_y > 0$):** pionowa składowa siły oporu $F_{Dy} = -c v v_y$ działa w dół, a więc zgodnie z grawitacją. Wypadkowe pionowe opóźnienie wynosi $|a_y| = g + k v v_y > g$, co powoduje szybsze wygaszanie prędkości pionowej niż w próżni.
+2. **W apogeum toru ($v_y = 0$):** składowa pionowa prędkości chwilowo się zeruje, a opór działa wyłącznie w kierunku poziomym ($F_D = F_{Dx}$). W tym punkcie przyspieszenie pionowe wynosi ściśle $a_y = -g$.
+3. **W fazie opadania ($v_y < 0$):** pionowa składowa siły oporu $F_{Dy} = -c v v_y > 0$ działa w górę, przeciwdziałając przyspieszeniu grawitacyjnemu. Wypadkowe przyspieszenie pionowe jest wówczas mniejsze co do modułu niż przyspieszenie ziemskie: $|a_y| = g - k v |v_y| < g$.
 
 ### 3.2. Parametry modelu oporu
 
-Do obliczenia ilustracyjnego przyjmujemy kulę o parametrach zbliżonych do piłki:
+Do obliczeń przyjęto parametry kuli zbliżone do piłki:
 
 | Parametr | Wartość | Jednostka SI |
 | :--- | ---: | :---: |
@@ -240,44 +251,37 @@ Do obliczenia ilustracyjnego przyjmujemy kulę o parametrach zbliżonych do pił
 | Współczynnik oporu $C_D$ | $0{,}47$ | $1$ |
 | Przyspieszenie grawitacyjne $g$ | $9{,}81$ | $\mathrm{m/s^2}$ |
 
-Dla kuli pole przekroju poprzecznego jest kołem:
+Pole przekroju poprzecznego kuli wynosi:
 
 $$
-A=\pi\left(\frac{d}{2}\right)^2
-=\pi(0{,}0365\,\mathrm{m})^2
-=0{,}00418539\,\mathrm{m^2}.
+A = \pi\left(\frac{d}{2}\right)^2 = \pi(0{,}0365\,\mathrm{m})^2 = 0{,}00418539\,\mathrm{m^2}.
 $$
 
 Wartości współczynników wynoszą:
 
 $$
-c=\frac{1}{2}\rho C_D A
-=0{,}00120412\,\mathrm{kg/m},
+c = \frac{1}{2}\rho C_D A = 0{,}00120412\,\mathrm{kg/m},
 \qquad
-k=\frac{c}{m}
-=0{,}00830944\,\mathrm{m^{-1}}.
+k = \frac{c}{m} = 0{,}00830944\,\mathrm{m^{-1}}.
 $$
 
-Są to założone parametry modelowe. Rzeczywiste $C_D$ może zależeć między innymi od kształtu, chropowatości, rotacji i liczby Reynoldsa.
+Są to założone parametry modelowe. Rzeczywisty współczynnik $C_D$ może zależeć m.in. od kształtu, chropowatości, rotacji oraz liczby Reynoldsa.
 
-### 3.3. Energia w modelu z oporem
+### 3.3. Bilans energii i dysypacja
 
-Energia mechaniczna w polu grawitacyjnym jest sumą:
-
-$$
-E_m=\frac{1}{2}mv^2+mgy.
-$$
-
-Moc siły oporu, czyli tempo zmiany energii, to iloczyn skalarny siły i prędkości:
+Całkowita energia mechaniczna ciała w jednorodnym polu grawitacyjnym jest sumą energii kinetycznej ruchu postępowego i energii potencjalnej grawitacji:
 
 $$
-\frac{dE_m}{dt}
-=\vec F_D\cdot\vec v
-=-cv^3
-=-\frac{1}{2}\rho C_D A\,v^3\leq 0.
+E_m = E_k + E_p = \frac{1}{2}mv^2 + mgy.
 $$
 
-Energia mechaniczna maleje; jest rozpraszana głównie w postaci ciepła w powietrzu. W modelu bez oporu suma energii kinetycznej i potencjalnej pozostaje stała.
+Siła oporu aerodynamicznego $\vec F_D$ jest nieliniową siłą dyssypatywną, która wykonuje nad poruszającym się ciałem pracę ujemną. Szybkość utraty energii mechanicznej (moc siły oporu) określa iloczyn skalarny wektora siły i wektora prędkości:
+
+$$
+\frac{dE_m}{dt} = \vec F_D\cdot\vec v = -cv^3 = -\frac{1}{2}\rho C_D A\,v^3 \le 0.
+$$
+
+Pochodna ta jest stale ujemna dla każdego stanu ruchu ($v > 0$). Energia mechaniczna układu monotonicznie maleje w czasie — zostaje nieodwracalnie rozproszona (zdysypowana), przekształcając się w energię kinetyczną zawirowań powietrza oraz energię wewnętrzną (ciepło) ośrodka i ciała. W modelu idealnym siły dyssypatywne nie występują, a suma $E_k+E_p$ pozostaje ściśle stała.
 
 ## 4. Wyniki i interpretacja wykresów
 
@@ -290,56 +294,58 @@ Numeryczne rozwiązanie równań z oporem daje następujące przybliżone wyniki
 | Zasięg | $9{,}21553\,\mathrm{m}$ | $8{,}77305\,\mathrm{m}$ |
 | Szybkość przy lądowaniu | $35{,}9781\,\mathrm{m/s}$ | $33{,}4706\,\mathrm{m/s}$ |
 
-W modelu idealnym prędkość przy lądowaniu ma taką samą wartość jak prędkość początkowa, ponieważ ciało wraca na tę samą wysokość, a energia mechaniczna jest zachowana. Z oporem ciało traci energię, ma mniejszą szybkość przy lądowaniu i osiąga krótszy zasięg.
+W modelu idealnym prędkość przy lądowaniu ma dokładnie taką samą wartość jak prędkość początkowa ($v(T) = v_0$), ponieważ ciało wraca na ten sam poziom odniesienia ($y=0$), a energia mechaniczna jest zachowana. W modelu z oporem siła aerodynamiczna wykonuje pracę ujemną, wskutek czego prędkość uderzenia o podłoże maleje do ok. $33{,}47\,\mathrm{m/s}$, a zasięg ulega skróceniu o ok. $4{,}8\%$.
 
 ![Położenie poziome i wysokość w funkcji czasu w obu modelach](files/rzut_ukosny/polozenie_czas.png)
 
-*Rysunek 2. Położenie poziome rośnie w obu modelach. Przy oporze wysokość maksymalna i czas lotu są nieco mniejsze.*
+*Rysunek 2. Przebiegi współrzędnych $x(t)$ oraz $y(t)$. Opór powietrza powoduje nieliniowe hamowanie ruchu poziomego oraz skrócenie czasu trwania lotu i maksymalnej wysokości.*
 
 ![Składowe prędkości poziomej i pionowej w funkcji czasu](files/rzut_ukosny/predkosc_czas.png)
 
-*Rysunek 3. Bez oporu $v_x$ jest stałe, a $v_y$ zmienia się liniowo. Z oporem zmieniają się obie składowe prędkości.*
+*Rysunek 3. Składowe prędkości: bez oporu $v_x$ jest stałe, a $v_y$ maleje ściśle liniowo. Z oporem $v_x$ maleje monotonicznie wskutek hamowania, a $v_y$ osiąga zero w apogeum i kończy lot z mniejszą wartością bezwzględną przy lądowaniu.*
 
 ![Składowe przyspieszenia z oporem i porównanie pionowego przyspieszenia z g](files/rzut_ukosny/przyspieszenie_czas.png)
 
-*Rysunek 4. Składowe przyspieszenia z oporem nie są stałe. Wznoszące ciało ma pionową siłę oporu skierowaną w dół, natomiast podczas opadania opór działa ku górze.*
+*Rysunek 4. Ewolucja składowych przyspieszenia: przyspieszenie poziome $a_x$ jest stale ujemne. Przyspieszenie pionowe w fazie wznoszenia przekracza co do modułu $g$ ($a_y < -g$), w apogeum wynosi dokładnie $-g$, a w fazie opadania jest mniejsze co do modułu ($a_y > -g$).*
 
 ![Energia kinetyczna, potencjalna i suma mechaniczna w modelu z oporem](files/rzut_ukosny/energia.png)
 
-*Rysunek 5. Energia kinetyczna i suma mechaniczna odczytywane są z lewej osi, energia potencjalna z prawej (oddzielne skale); suma maleje wskutek pracy siły oporu.*
+*Rysunek 5. Bilans energetyczny w locie z oporem: energia mechaniczna monotonicznie maleje o ok. $12{,}74\,\mathrm{J}$ (ok. $13{,}6\%$ energii początkowej) wskutek pracy siły oporu.*
 
 ![Portret fazowy prędkości z oporem oraz bez oporu](files/rzut_ukosny/portret_fazowy.png)
 
-*Rysunek 6. Portret fazowy przedstawia zależność składowej pionowej od poziomej. Linia przerywana pokazuje ruch idealny, krzywa ciągła — ruch z oporem.*
+*Rysunek 6. Portret fazowy składowych prędkości $(v_x, v_y)$: pionowy odcinek odpowiada ruchowi idealnemu ($v_x = \mathrm{const}$), natomiast krzywa wygięta w lewo odzwierciedla jednoczesne wygaszanie obu składowych prędkości przez opór.*
 
-Przy małym kącie $2^\circ$ składowa początkowej prędkości skierowana do góry wynosi tylko około $1{,}26\,\mathrm{m/s}$, podczas gdy pozioma jest bliska $36\,\mathrm{m/s}$. Lot jest krótki i tor niski. Opór działa jednak przez cały czas i przede wszystkim zmniejsza składową poziomą, a więc zasięg. Na wykresie toru wysokość jest celowo przedstawiona w powiększeniu.
+Przy małym kącie wyrzutu ($2^\circ$) składowa początkowej prędkości skierowana do góry wynosi zaledwie $1{,}26\,\mathrm{m/s}$, podczas gdy składowa pozioma wynosi prawie $36\,\mathrm{m/s}$. Lot charakteryzuje się krótkim czasem trwania ($T \approx 0{,}25\,\mathrm{s}$) oraz bardzo niskim pułapem ($H \approx 8\,\mathrm{cm}$). Mimo to siła oporu działa nieprzerwanie, redukując głównie pęd poziomy ciała i skracając zasięg rzutu.
 
 ## 5. Metoda numeryczna i kontrola wyników
 
-Stan układu zapisujemy jako wektor:
+Wektor stanu układu ma postać:
 
 $$
-\mathbf{s}(t)=
-\begin{bmatrix}x&y&v_x&v_y\end{bmatrix}^{\mathsf T},
+\mathbf{s}(t) =
+\begin{pmatrix}
+x & y & v_x & v_y \\
+\end{pmatrix}^{\mathsf T},
 \qquad
-\dot{\mathbf{s}}=\mathbf{f}(\mathbf{s}).
+\dot{\mathbf{s}} = \mathbf{f}(\mathbf{s}).
 $$
 
-Równania z oporem całkujemy klasyczną metodą Rungego–Kutty czwartego rzędu (RK4). Dla kroku $\Delta t$ i prawej strony $\mathbf{f}$ kolejne nachylenia są równe:
+Równania ruchu z oporem rozwiązano klasyczną metodą Rungego–Kutty czwartego rzędu (RK4). Dla kroku $\Delta t$ i prawej strony $\mathbf{f}$ kolejne współczynniki nachylenia wynoszą:
 
 $$
 \begin{aligned}
-\mathbf{k}_1&=\mathbf{f}(\mathbf{s}_n),\\
-\mathbf{k}_2&=\mathbf{f}\left(\mathbf{s}_n+\frac{\Delta t}{2}\mathbf{k}_1\right),\\
-\mathbf{k}_3&=\mathbf{f}\left(\mathbf{s}_n+\frac{\Delta t}{2}\mathbf{k}_2\right),\\
-\mathbf{k}_4&=\mathbf{f}\left(\mathbf{s}_n+\Delta t\,\mathbf{k}_3\right),
+\mathbf{k}_1 &= \mathbf{f}(\mathbf{s}_n), \\
+\mathbf{k}_2 &= \mathbf{f}\left(\mathbf{s}_n+\frac{\Delta t}{2}\mathbf{k}_1\right), \\
+\mathbf{k}_3 &= \mathbf{f}\left(\mathbf{s}_n+\frac{\Delta t}{2}\mathbf{k}_2\right), \\
+\mathbf{k}_4 &= \mathbf{f}\left(\mathbf{s}_n+\Delta t\,\mathbf{k}_3\right),
 \end{aligned}
 $$
 
+a nowy stan w kolejnym kroku wyznacza wzór:
+
 $$
-\mathbf{s}_{n+1}=\mathbf{s}_n+
-\frac{\Delta t}{6}
-(\mathbf{k}_1+2\mathbf{k}_2+2\mathbf{k}_3+\mathbf{k}_4).
+\mathbf{s}_{n+1} = \mathbf{s}_n + \frac{\Delta t}{6}(\mathbf{k}_1+2\mathbf{k}_2+2\mathbf{k}_3+\mathbf{k}_4).
 $$
 
 W skrypcie użyto $\Delta t=2\cdot10^{-4}\,\mathrm{s}$. Obliczenia kończą się, gdy wysokość po raz pierwszy spadnie poniżej zera. Położenie i czas uderzenia są interpolowane liniowo pomiędzy ostatnim punktem nad podłożem a pierwszym punktem pod nim, dzięki czemu punkt końcowy odpowiada $y=0$.
@@ -348,7 +354,7 @@ Model bez oporu nie wymaga całkowania numerycznego: jego rozwiązanie analitycz
 
 ## 6. Kod i odtwarzanie wykresów
 
-Wykresy utworzono lokalnie za pomocą Pythona, NumPy i Matplotlib. Pełny skrypt jest również dostępny jako [`generuj_wykresy.py`](generuj_wykresy.py). W folderze tego raportu uruchom:
+Wykresy utworzono lokalnie za pomocą Pythona, NumPy i Matplotlib. Pełny skrypt jest również dostępny jako [`generuj_wykresy.py`](generuj_wykresy.py). W katalogu raportu należy uruchomić:
 
 ```bash
 python -m pip install numpy matplotlib
@@ -610,7 +616,8 @@ if __name__ == "__main__":
 
 ## 7. Wnioski
 
-1. Dla rzutu bez oporu składowe ruchu rozwiązują się niezależnie: pozioma prędkość jest stała, a pionowe przyspieszenie wynosi $-g$. Eliminacja czasu prowadzi do parabolicznego równania toru.
-2. Przy $v_0=36\,\mathrm{m/s}$ i $\alpha=2^\circ$ model idealny przewiduje zasięg około $9{,}22\,\mathrm{m}$ i maksymalną wysokość około $0{,}0805\,\mathrm{m}$.
-3. Opór kwadratowy sprzęga składowe prędkości, zmniejsza energię mechaniczną i — dla przyjętych parametrów kuli — skraca zasięg do około $8{,}77\,\mathrm{m}$.
-4. Numeryczna metoda RK4 pozwala obliczyć tor mimo braku prostego rozwiązania analitycznego. Wartości z oporem zależą od przyjętych parametrów i uproszczeń modelu.
+1. W modelu idealnym (bez oporu powietrza) ruch poziomy i pionowy są niezależne: składowa pozioma jest ruchem jednostajnym prostoliniowym ($v_x = \mathrm{const}$), a składowa pionowa ruchem jednostajnie zmiennym pod wpływem stałego przyspieszenia grawitacyjnego $a_y = -g$. W najwyższym punkcie toru prędkość pionowa pod wpływem grawitacji zostaje zredukowana do zera ($v_y = 0$), po czym następuje faza przyspieszonego opadania.
+2. W modelu rzeczywistym z oporem kwadratowym składowe prędkości ulegają nieliniowemu sprzężeniu poprzez całkowitą szybkość $v = \sqrt{v_x^2 + v_y^2}$. Opór powietrza łamie symetrię paraboli, przekształcając tor w asymetryczną trajektorię balistyczną.
+3. W fazie wznoszenia siła oporu działa w dół, sumując się z grawitacją ($|a_y| > g$). W apogeum toru opór pionowy znika ($a_y = -g$), natomiast w fazie opadania opór działa w górę, zmniejszając wypadkowe przyspieszenie ($|a_y| < g$).
+4. Siła oporu ma charakter dyssypatywny i wykonuje ujemną pracę nad ciałem, co prowadzi do monotonicznego spadku energii mechanicznej (w rozpatrywanym przypadku ubytek wynosi ok. $12{,}74\,\mathrm{J}$, czyli $13{,}6\%$ energii początkowej). Skutkuje to skróceniem zasięgu rzutu z $9{,}22\,\mathrm{m}$ do $8{,}77\,\mathrm{m}$ oraz obniżeniem prędkości przy uderzeniu w podłoże do $33{,}47\,\mathrm{m/s}$.
+5. Zastosowanie numerycznej metody Rungego–Kutty IV rzędu (RK4) z krokiem $\Delta t = 2\cdot 10^{-4}\,\mathrm{s}$ oraz liniową interpolacją punktu uderzenia o podłoże ($y=0$) umożliwia dokładne wyznaczenie parametrów trajektorii i bilansu energetycznego układu, dla którego brak jest elementarnych rozwiązań analitycznych.
