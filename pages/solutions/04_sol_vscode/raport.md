@@ -58,7 +58,7 @@ $$
 | $g$ | przyspieszenie grawitacyjne | $\mathrm{m/s^2}$ |
 | $\alpha$ | kąt wyrzutu | $\mathrm{rad}$ (w danych także $^\circ$) |
 | $\rho$ | gęstość powietrza | $\mathrm{kg/m^3}$ |
-| $C_D$ | bezwymiarowy współczynnik oporu | $1$ |
+| $C_D$ | bezwymiarowy współczynnik oporu | $-$ |
 | $A$ | pole przekroju poprzecznego | $\mathrm{m^2}$ |
 | $c$ | współczynnik w prawie oporu $F_D=c v^2$ | $\mathrm{kg/m}$ |
 | $k=c/m$ | parametr w równaniu przyspieszenia oporu | $\mathrm{m^{-1}}$ |
