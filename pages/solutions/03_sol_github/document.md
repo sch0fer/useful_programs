@@ -15,11 +15,7 @@ $$
 or, in coordinates,
 
 $$
-\boxed{
-\partial_\lambda g_{\mu\nu}
-=\Gamma^\rho_{\lambda\mu}g_{\rho\nu}
-+\Gamma^\rho_{\lambda\nu}g_{\mu\rho}.
-}
+\partial_\lambda g_{\mu\nu} = \Gamma^\rho_{\lambda\mu}g_{\rho\nu} + \Gamma^\rho_{\lambda\nu}g_{\mu\rho}.
 $$
 
 This is a linear, first-order system of partial differential equations for
@@ -57,9 +53,7 @@ A useful local necessary condition follows by commuting two covariant
 derivatives:
 
 $$
-0=[\nabla_\alpha,\nabla_\beta]g_{\mu\nu}
-=-R^\rho{}_{\mu\alpha\beta}g_{\rho\nu}
--R^\rho{}_{\nu\alpha\beta}g_{\mu\rho}.
+0 = [\nabla_\alpha,\nabla_\beta]g_{\mu\nu} = -R^\rho{}_{\mu\alpha\beta}g_{\rho\nu} - R^\rho{}_{\nu\alpha\beta}g_{\mu\rho}.
 $$
 
 At a point, these are linear algebraic equations for the unknown entries of
@@ -153,16 +147,13 @@ so $c_\phi=c_\theta$. The equations for components that vanish in the
 diagonal ansatz are also important. For example,
 
 $$
-0=\nabla_t g_{tr}
-=-\Gamma^r{}_{tt}g_{rr}-\Gamma^t{}_{tr}g_{tt}
+0 = \nabla_t g_{tr} = -\Gamma^r{}_{tt}g_{rr}-\Gamma^t{}_{tr}g_{tt}
 $$
 
 implies $c_r=c_t$, while
 
 $$
-0=\nabla_\theta g_{r\theta}
-=-\Gamma^\theta{}_{\theta r}g_{\theta\theta}
--\Gamma^r{}_{\theta\theta}g_{rr}
+0 = \nabla_\theta g_{r\theta} = -\Gamma^\theta{}_{\theta r}g_{\theta\theta} - \Gamma^r{}_{\theta\theta}g_{rr}
 $$
 
 implies $c_\theta=c_r$. Hence all four constants coincide:
@@ -174,13 +165,11 @@ $$
 The reconstructed metric is therefore
 
 $$
-\boxed{
 ds^2=c\left[
 -\left(1-\frac{2M}{r}\right)dt^2
 +\left(1-\frac{2M}{r}\right)^{-1}dr^2
 +r^2d\theta^2+r^2\sin^2\theta\,d\phi^2
 \right].
-}
 $$
 
 For $c>0$ this has the usual $(-,+,+,+)$ signature. Thus the Schwarzschild
@@ -251,8 +240,7 @@ understood. The characteristic Taub-NUT twist can be read directly from
 the connection:
 
 $$
-\frac{\Gamma^r{}_{t\phi}}{\Gamma^r{}_{tt}}
-=q(\theta)=2\ell\cos\theta,
+\frac{\Gamma^r{}_{t\phi}}{\Gamma^r{}_{tt}} = q(\theta) = 2\ell\cos\theta,
 $$
 
 where the denominator is nonzero. Similarly,
@@ -299,8 +287,7 @@ $$
 and
 
 $$
-\frac{C'}{C}=2\Gamma^\theta{}_{r\theta}
-=\frac{2r}{\Sigma}.
+\frac{C'}{C} = 2\Gamma^\theta{}_{r\theta} = \frac{2r}{\Sigma}.
 $$
 
 After integration,
@@ -352,17 +339,15 @@ $\partial_r g_{t\phi}=-qA'$, as required.
 The reconstructed metric is therefore
 
 $$
-\boxed{
 \begin{aligned}
 ds^2=k\Bigg[&
 -\frac{r^2-2Mr-\ell^2}{r^2+\ell^2}
- \left(dt+2\ell\cos\theta\,d\phi\right)^2\\
+ \left(dt+2\ell\cos\theta\,d\phi\right)^2 \\
 &+\frac{r^2+\ell^2}{r^2-2Mr-\ell^2}\,dr^2
 +(r^2+\ell^2)
  \left(d\theta^2+\sin^2\theta\,d\phi^2\right)
 \Bigg].
 \end{aligned}
-}
 $$
 
 For $k>0$, this is Lorentzian wherever $F\neq0$; the coordinate vector
