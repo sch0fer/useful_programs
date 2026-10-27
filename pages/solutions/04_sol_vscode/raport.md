@@ -275,13 +275,13 @@ $$
 E_m = E_k + E_p = \frac{1}{2}mv^2 + mgy.
 $$
 
-Siła oporu aerodynamicznego $\vec F_D$ jest nieliniową siłą dyssypatywną, która wykonuje nad poruszającym się ciałem pracę ujemną. Szybkość utraty energii mechanicznej (moc siły oporu) określa iloczyn skalarny wektora siły i wektora prędkości:
+Siła oporu aerodynamicznego $\vec F_D$ jest nieliniową siłą dysypatywną, która wykonuje nad poruszającym się ciałem pracę ujemną. Szybkość utraty energii mechanicznej (moc siły oporu) określa iloczyn skalarny wektora siły i wektora prędkości:
 
 $$
 \frac{dE_m}{dt} = \vec F_D\cdot\vec v = -cv^3 = -\frac{1}{2}\rho C_D A\,v^3 \le 0.
 $$
 
-Pochodna ta jest stale ujemna dla każdego stanu ruchu ($v > 0$). Energia mechaniczna układu monotonicznie maleje w czasie — zostaje nieodwracalnie rozproszona (zdysypowana), przekształcając się w energię kinetyczną zawirowań powietrza oraz energię wewnętrzną (ciepło) ośrodka i ciała. W modelu idealnym siły dyssypatywne nie występują, a suma $E_k+E_p$ pozostaje ściśle stała.
+Pochodna ta jest stale ujemna dla każdego stanu ruchu ($v > 0$). Energia mechaniczna układu monotonicznie maleje w czasie — zostaje nieodwracalnie rozproszona (zdysypowana), przekształcając się w energię kinetyczną zawirowań powietrza oraz energię wewnętrzną (ciepło) ośrodka i ciała. W modelu idealnym siły dysypatywne nie występują, a suma $E_k+E_p$ pozostaje ściśle stała.
 
 ## 4. Wyniki i interpretacja wykresów
 
@@ -292,7 +292,7 @@ Numeryczne rozwiązanie równań z oporem daje następujące przybliżone wyniki
 | Czas lotu | $0{,}256143\,\mathrm{s}$ | $0{,}252954\,\mathrm{s}$ |
 | Maksymalna wysokość | $0{,}080453\,\mathrm{m}$ | $0{,}078474\,\mathrm{m}$ |
 | Zasięg | $9{,}21553\,\mathrm{m}$ | $8{,}77305\,\mathrm{m}$ |
-| Szybkość przy lądowaniu | $35{,}9781\,\mathrm{m/s}$ | $33{,}4706\,\mathrm{m/s}$ |
+| Szybkość przy lądowaniu | $36{,}0000\,\mathrm{m/s}$ | $33{,}4706\,\mathrm{m/s}$ |
 
 W modelu idealnym prędkość przy lądowaniu ma dokładnie taką samą wartość jak prędkość początkowa ($v(T) = v_0$), ponieważ ciało wraca na ten sam poziom odniesienia ($y=0$), a energia mechaniczna jest zachowana. W modelu z oporem siła aerodynamiczna wykonuje pracę ujemną, wskutek czego prędkość uderzenia o podłoże maleje do ok. $33{,}47\,\mathrm{m/s}$, a zasięg ulega skróceniu o ok. $4{,}8\%$.
 
@@ -619,5 +619,5 @@ if __name__ == "__main__":
 1. W modelu idealnym (bez oporu powietrza) ruch poziomy i pionowy są niezależne: składowa pozioma jest ruchem jednostajnym prostoliniowym ($v_x = \mathrm{const}$), a składowa pionowa ruchem jednostajnie zmiennym pod wpływem stałego przyspieszenia grawitacyjnego $a_y = -g$. W najwyższym punkcie toru prędkość pionowa pod wpływem grawitacji zostaje zredukowana do zera ($v_y = 0$), po czym następuje faza przyspieszonego opadania.
 2. W modelu rzeczywistym z oporem kwadratowym składowe prędkości ulegają nieliniowemu sprzężeniu poprzez całkowitą szybkość $v = \sqrt{v_x^2 + v_y^2}$. Opór powietrza łamie symetrię paraboli, przekształcając tor w asymetryczną trajektorię balistyczną.
 3. W fazie wznoszenia siła oporu działa w dół, sumując się z grawitacją ($|a_y| > g$). W apogeum toru opór pionowy znika ($a_y = -g$), natomiast w fazie opadania opór działa w górę, zmniejszając wypadkowe przyspieszenie ($|a_y| < g$).
-4. Siła oporu ma charakter dyssypatywny i wykonuje ujemną pracę nad ciałem, co prowadzi do monotonicznego spadku energii mechanicznej (w rozpatrywanym przypadku ubytek wynosi ok. $12{,}74\,\mathrm{J}$, czyli $13{,}6\%$ energii początkowej). Skutkuje to skróceniem zasięgu rzutu z $9{,}22\,\mathrm{m}$ do $8{,}77\,\mathrm{m}$ oraz obniżeniem prędkości przy uderzeniu w podłoże do $33{,}47\,\mathrm{m/s}$.
+4. Siła oporu ma charakter dysypatywny i wykonuje ujemną pracę nad ciałem, co prowadzi do monotonicznego spadku energii mechanicznej (w rozpatrywanym przypadku ubytek wynosi ok. $12{,}74\,\mathrm{J}$, czyli $13{,}6\%$ energii początkowej). Skutkuje to skróceniem zasięgu rzutu z $9{,}22\,\mathrm{m}$ do $8{,}77\,\mathrm{m}$ oraz obniżeniem prędkości przy uderzeniu w podłoże do $33{,}47\,\mathrm{m/s}$.
 5. Zastosowanie numerycznej metody Rungego–Kutty IV rzędu (RK4) z krokiem $\Delta t = 2\cdot 10^{-4}\,\mathrm{s}$ oraz liniową interpolacją punktu uderzenia o podłoże ($y=0$) umożliwia dokładne wyznaczenie parametrów trajektorii i bilansu energetycznego układu, dla którego brak jest elementarnych rozwiązań analitycznych.

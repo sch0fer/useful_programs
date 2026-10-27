@@ -70,7 +70,7 @@
 
 ## Finalna wersja notatki
 
-# 11. CO TO SĄ KROPKI KWANTOWE I JAKIE MAJĄ WŁASNOŚCI?
+### 11. CO TO SĄ KROPKI KWANTOWE I JAKIE MAJĄ WŁASNOŚCI?
 
 - 0D struktura
 - ruch elektronu ograniczony w trzech wymiarach
@@ -78,7 +78,7 @@
 - równanie Schrödingera:
 
 $$
-\frac{\hbar^2}{2m}\left(\frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial y^2}+\frac{\partial^2}{\partial z^2}\right)\Psi(x,y,z)=E\Psi(x,y,z)
+-\frac{\hbar^2}{2m}\left(\frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial y^2}+\frac{\partial^2}{\partial z^2}\right)\Psi(x,y,z)=E\Psi(x,y,z)
 $$
 
 - energia:
@@ -101,4 +101,4 @@ $$
 
 ⇒ rozwiązanie - funkcje Bessela typu $J_{l+1/2}$
 
-# 12. PORÓWNAĆ WŁASNOŚCI HETEROSTRUKTUR, DRUTÓW I KROPEK KWANTOWYCH.
+### 12. PORÓWNAĆ WŁASNOŚCI HETEROSTRUKTUR, DRUTÓW I KROPEK KWANTOWYCH.

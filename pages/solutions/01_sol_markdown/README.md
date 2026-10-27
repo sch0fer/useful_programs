@@ -1,7 +1,7 @@
 # Programy użytkowe - pierwsze starcie
 
 ## Czym są Programy użytkowe?
-Programy użytkowe to zajęcia przygotowujące studentów do odpowiedzialnego korzystanie z dobrodziejstw XXI-wiecznej technologii.
+Programy użytkowe to zajęcia przygotowujące studentów do odpowiedzialnego korzystania z dobrodziejstw XXI-wiecznej technologii.
 
 ## Zakres materiału
 Na zajęciach studenci będą pracować z licznymi technologiami, takimi jak: 
@@ -39,7 +39,7 @@ Markdown to tzw. *język znaczników*. Pozwala on na tworzenie sformatowanych do
 
 ## Zwykły tekst vs Markdown vs HTML
 
-# Porównanie formatów plików: TXT, Markdown i HTML
+### Porównanie formatów plików: TXT, Markdown i HTML
 
 | Cecha | Zwykły tekst (TXT) | Markdown (MD) | HTML |
 |---------|---------|---------|---------|
@@ -74,7 +74,7 @@ print(average)
 ## LaTeX
 Format markdown pozwala na embedowanie formatu LaTeX wprost do dokumentów .md. Pozwala to na tworzenie np. prac naukowych czy też książek. Format LaTeX może występować w jednej linii z tekstem: 
 - Twierdzenie Pitagorasa: $a^2+b^2=c^2$
-- Wzór na miejsca zerowe funkcji kwadratowej: $x_0=\frac{-b \pm \sqrt{b^2-4ac}}{2a}$
+- Wzór na miejsca zerowe funkcji kwadratowej: $x_{1,2}=\frac{-b \pm \sqrt{b^2-4ac}}{2a}$
 - Definicja sinusa dowolnego kąta: $\sin{\alpha}=\frac{y}{r}$
 
 lub być zupełnie osobnym blokiem tekstu:
@@ -84,7 +84,7 @@ a^2+b^2=c^2
 $$
 
 $$
-x_0=\frac{-b \pm \sqrt{b^2-4ac}}{2a}
+x_{1,2}=\frac{-b \pm \sqrt{b^2-4ac}}{2a}
 $$
 
 $$
